@@ -5,9 +5,10 @@ node default {
         virtualenv => true,
     }
 
-    package {                                                                                                                                                                                                                                                                  
-        'apache2': ensure => latest;                                                                                                                                                                                                                                   
+    package {
+        'apache2': ensure => latest;
         'libapache2-mod-wsgi': ensure => latest;
+        'python-yaml': ensure => latest;
     }
 
     vcsrepo { '/var/www/wiki.ros.org/conf':
