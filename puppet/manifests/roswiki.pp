@@ -6,6 +6,7 @@ node default {
     }
 
     package {
+        'apache2-utils': ensure => latest;
         'apache2': ensure => latest;
         'libapache2-mod-wsgi': ensure => latest;
         'python-yaml': ensure => latest;
@@ -36,7 +37,7 @@ node default {
         ensure => 'link',
         target => '/etc/apache2/sites-available/wiki.ros.org.conf',
         notify => Service['apache2'],
-        require => File['/etc/apache2/sites-available/wiki.ros.org.conf'],
+        require => [File['/etc/apache2/sites-available/wiki.ros.org.conf'], Package['apache2-utils']],
     }
 
     file { '/etc/apache2/ports.conf':
