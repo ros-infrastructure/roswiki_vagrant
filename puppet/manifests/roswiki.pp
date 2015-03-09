@@ -20,11 +20,12 @@ node default {
     }    
 
     file { '/var/www/wiki.ros.org/data/plugin':
-        source => '/vagrant-roswiki',
-        recurse => true,
         owner => www-data,
         group => www-data,
-        ignore => ['.git', '*.pyc'],
+        ensure => 'link',
+        target => '/vagrant-roswiki',
+        require => Package['apache2'],
+        notify => Service['apache2'],
     }    
 
     file { '/etc/apache2/sites-available/wiki.ros.org.conf':
