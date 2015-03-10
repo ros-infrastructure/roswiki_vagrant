@@ -17,7 +17,7 @@ node default {
         provider => git,
         source => 'git://github.com/ros-infrastructure/roswiki.git',
         revision => 'conf',
-    }    
+    }
 
     file { '/var/www/wiki.ros.org/data/plugin':
         owner => www-data,
@@ -26,7 +26,7 @@ node default {
         target => '/vagrant-roswiki',
         require => Package['apache2'],
         notify => Service['apache2'],
-    }    
+    }
 
     file { '/etc/apache2/sites-available/wiki.ros.org.conf':
         content => template('roswiki/wiki.ros.org.conf.erb'),
@@ -86,7 +86,7 @@ node default {
         owner => 'www-data',
         group => 'www-data',
         require => [File['/var/www/wiki.ros.org/data/plugin'], File['/var/www/wiki.ros.org']],
-    } 
+    }
 
     python::pip { 'newrelic':
         pkgname => 'newrelic',
