@@ -37,7 +37,7 @@ else
 fi
 
 if [ "$(gem search -i librarian-puppet)" = "false" ]; then
-  gem install librarian-puppet --no-rdoc --no-ri
+  gem install librarian-puppet --no-rdoc --no-ri -v 2.2.3
   cd $PUPPET_DIR && librarian-puppet install --path modules-contrib
 else
   cd $PUPPET_DIR && librarian-puppet update
