@@ -100,7 +100,6 @@ node default {
         virtualenv => '/var/www/wiki.ros.org/venv',
         require => Python::Virtualenv['/var/www/wiki.ros.org/venv'],
         owner => 'www-data',
-        install_args => ['--allow-external moin --allow-unverified moin'],
     }
 
     file { '/var/www/wiki.ros.org':
